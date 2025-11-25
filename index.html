@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>DOCX to Markdown Converter</title>
+  <link rel="stylesheet" href="styles.css">
+  <!-- Libraries loaded from CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/mammoth@1.11.0/mammoth.browser.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/turndown@7.1.1/dist/turndown.min.js"></script>
+</head>
+<body>
+  <main class="container">
+    <header class="header">
+      <h1>DOCX → Markdown</h1>
+      <p class="subtitle">Upload a .docx file, convert to Markdown with embedded images as data URIs, preview and download.</p>
+    </header>
+
+    <section class="controls">
+      <label class="file-label">
+        <input id="file" type="file" accept=".docx" />
+        <span class="file-text">Choose .docx file</span>
+      </label>
+
+      <div class="buttons">
+        <button id="convert" class="btn primary">Convert</button>
+        <button id="download" class="btn" disabled>Download .md</button>
+        <button id="copy" class="btn" disabled>Copy Markdown</button>
+        <button id="clear" class="btn">Clear</button>
+      </div>
+    </section>
+
+    <section class="output">
+      <label class="label">Markdown Output</label>
+      <textarea id="md" readonly placeholder="Converted Markdown will appear here"></textarea>
+    </section>
+
+    <footer class="footer">
+      <small>Client‑side conversion using Mammoth and Turndown. No server required.</small>
+    </footer>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+  </html>
+  
