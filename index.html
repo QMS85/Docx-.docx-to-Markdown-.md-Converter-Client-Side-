@@ -22,6 +22,20 @@
         <span class="file-text">Choose .docx file</span>
       </label>
 
+      <!-- Add directly after the controls section in index.html -->
+<section class="status-row" aria-live="polite">
+  <div class="progress-wrap" aria-hidden="false">
+    <div id="progress" class="progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+      <div id="progress-bar" class="progress-bar" style="width:0%"></div>
+    </div>
+    <div id="progress-label" class="progress-label">Idle</div>
+  </div>
+
+  <div class="persistent-status" id="persistent-status" role="status">
+    <strong>Status</strong>: Ready
+  </div>
+</section>
+
       <div class="buttons">
         <button id="convert" class="btn primary">Convert</button>
         <button id="download" class="btn" disabled>Download .md</button>
