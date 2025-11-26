@@ -1,60 +1,66 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>DOCX to Markdown Converter</title>
-  <link rel="stylesheet" href="styles.css">
-  <!-- Libraries loaded from CDN -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>DOCX → Markdown Converter</title>
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="styles.css" />
+
+  <!-- Libraries (CDN) -->
   <script src="https://cdn.jsdelivr.net/npm/mammoth@1.11.0/mammoth.browser.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/turndown@7.1.1/dist/turndown.min.js"></script>
 </head>
 <body>
-  <main class="container">
+  <main class="container" id="app">
     <header class="header">
       <h1>DOCX → Markdown</h1>
-      <p class="subtitle">Upload a .docx file, convert to Markdown with embedded images as data URIs, preview and download.</p>
+      <p class="subtitle">Upload a .docx file, convert to Markdown with embedded images (data URIs), preview and download. Static, client-side, GitHub Pages ready.</p>
     </header>
 
-    <section class="controls">
-      <label class="file-label">
-        <input id="file" type="file" accept=".docx" />
-        <span class="file-text">Choose .docx file</span>
+    <section class="controls" aria-label="File controls">
+      <label class="file-label" id="drop-zone">
+        <input id="file" type="file" accept=".docx" aria-label="Upload DOCX file" />
+        <span class="file-text">Choose or drop a .docx file</span>
       </label>
 
-      <!-- Add directly after the controls section in index.html -->
-<section class="status-row" aria-live="polite">
-  <div class="progress-wrap" aria-hidden="false">
-    <div id="progress" class="progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
-      <div id="progress-bar" class="progress-bar" style="width:0%"></div>
-    </div>
-    <div id="progress-label" class="progress-label">Idle</div>
-  </div>
-
-  <div class="persistent-status" id="persistent-status" role="status">
-    <strong>Status</strong>: Ready
-  </div>
-</section>
-
-      <div class="buttons">
-        <button id="convert" class="btn primary">Convert</button>
+      <div class="buttons" role="group" aria-label="Actions">
+        <button id="convert" class="btn primary" aria-live="polite">Convert</button>
         <button id="download" class="btn" disabled>Download .md</button>
         <button id="copy" class="btn" disabled>Copy Markdown</button>
         <button id="clear" class="btn">Clear</button>
       </div>
     </section>
 
-    <section class="output">
+    <!-- Progress and persistent status -->
+    <section class="status-row" aria-live="polite">
+      <div class="progress-wrap" aria-hidden="false">
+        <div id="progress" class="progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+          <div id="progress-bar" class="progress-bar" style="width:0%"></div>
+        </div>
+        <div id="progress-label" class="progress-label">Idle</div>
+      </div>
+
+      <div class="persistent-status" id="persistent-status" role="status">
+        <strong>Status</strong>: Ready
+      </div>
+    </section>
+
+    <section class="output" aria-label="Markdown output">
       <label class="label">Markdown Output</label>
       <textarea id="md" readonly placeholder="Converted Markdown will appear here"></textarea>
     </section>
 
     <footer class="footer">
-      <small>Client‑side conversion using Mammoth and Turndown. No server required.</small>
+      <small>Client-side conversion using Mammoth and Turndown. No server required. Images embedded as data URIs.</small>
     </footer>
   </main>
 
+  <!-- Toast container -->
+  <div id="toast-container" aria-live="polite" aria-atomic="true" class="toast-container" hidden></div>
+
+  <!-- App script -->
   <script src="app.js"></script>
 </body>
-  </html>
-  
+</html>
